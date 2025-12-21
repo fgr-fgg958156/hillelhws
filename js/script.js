@@ -6,7 +6,7 @@ const objectToListItem = (obj, id, name) => {
         <li key={id}>
             <b>{name}</b> : 
             <ul>
-                {Object.keys(obj).map((keyName) => (typeof(obj[keyName]) === "object" ? objectToListItem(obj[keyName], `${id}-${keyName}`, keyName) : <li key={`${id}-${keyName}`}><b>{keyName}</b> : {obj[keyName]}</li>))}
+                {Object.keys(obj).map((keyName) => (obj[keyName] && typeof(obj[keyName]) === "object" && !Array.isArray(obj[keyName]) ? objectToListItem(obj[keyName], `${id}-${keyName}`, keyName) : <li key={`${id}-${keyName}`}><b>{keyName}</b> : {Array.isArray(obj[keyName]) ? obj[keyName].join(", ") : obj[keyName]}</li>))}
             </ul>
         </li>
     )

@@ -3,6 +3,7 @@ const users = [
     id: 1,
     name: "Leanne Graham",
     username: "Bret",
+    friends: ["Max", "Ann"], 
     email: "Sincere@april.biz",
     address: {
       street: "Kulas Light",
