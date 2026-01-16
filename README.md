@@ -1,94 +1,31 @@
-# ТЗ:
+Create a CRUD-application using:
 
-## ДЗ 2. Кошик покупок 🛒🧭🧭🧭🧭🧭
+1. Hooks 
+    - useState ✔️
+    - useEffect ✔️
+    - 🌟 useRef
+2. Axios ✔️
+3. Get/Update/Delete data using fetch/axios from: ✔️
+    - mockapi.io/users
+        - Сервіс mockapi замість методу PATCH приймає запити методом PUT.
+    - https://jsonplaceholder.typicode.com/users
+    - PS: оригінальний масив доступний за посиланням users.
 
-*Пункти позначені 🌟 – не обов'язкові до виконання.*
+Mandatory functionality of the application:
 
-**Завдання: Реалізувати кошик покупок у React, використовуючи:**
+* Render a list.✔️
+* Ability to modify a list item.✔️
+* Ability to delete a list item.✔️
+* Ability to add an item to the list.✔️
 
-* useState та useEffect;
-* передачу даних через props;
-* 🌟 принцип **lifting state up** для обміну даними між дочірніми компонентами.
+Division of functionality into folders:
 
-**Структура компонентів:** 
+* components ✔️
+* 🌟 services ✔️
+* 🌟 hooks
 
-```
-App
-├── CartSummary
-├── CartControls
-└── CartStatistics
-```
+🌟 The implementation of the functionality will be a plus:
 
-**Вимоги до реалізації:**
-
-* **<u>Батьківський компонент (App)</u>**
-
-    App є **єдиним джерелом правди** для стану кошика.
-
-    **Зберігає у state:**
-    - itemsCount — кількість товарів у кошику;
-    - totalPrice — загальну вартість;
-    - 🌟 actionsCount — кількість дій користувача.
-
-    **Описує функції:**
-
-    - додавання товару;
-    - видалення товару;
-    - очищення кошика;
-
-    Передає **дані та функції** в дочірні компоненти через props.
-
-1. **<u>Компонент відображення кошика (CartSummary)</u>**
-
-    Отримує itemsCount та totalPrice через props.
-
-    **Відображає:**
-
-    - кількість товарів у кошику;
-    - загальну суму.
-
-    **Не має власного state.**
-
-    Не змінює дані напряму.
-
-2. **<u>Компонент керування кошиком (CartControls)</u>**
-
-    **Містить кнопки:**
-
-    - Add item (+100₴)
-    - Remove item (-100₴)
-    - Clear cart
-    - 🌟 Може містити input для задання ціни товару (за бажанням).
-
-    **🌟 Зберігає у state:**
-
-    - 🌟 actionsCount — кількість дій користувача.
-
-    **При кожній дії:**
-
-    - викликає відповідну функцію з App;
-    - 🌟 збільшує actionsCount при кожній взаємодії з кошиком (додає товар, видаляє, очищає кошик)
-
-3. **<u>Компонент статистики (CartStatistics)</u>**
-
-    **Отримує всі необхідні дані через props:**
-
-    - itemsCount
-    - totalPrice
-    - 🌟 actionsCount
-
-    Відображає статистику кошика.
-
-**🌟 Вимога: реалізація lifting state up для actionsCount**
-
-1. Стан actionsCount, що відображає кількість дій користувача, **повинен зберігатися локально в компоненті CartControls.**
-
-2. Компонент CartControls **повинен піднімати значення actionsCount у батьківський компонент App** шляхом виклику callback-функції, переданої через props.
-
-3. Компонент App **не повинен змінювати значення actionsCount самостійно,** а лише:
-    - приймати оновлене значення з CartControls;
-    - зберігати його у власному state;
-    - передавати його далі в компонент CartStatistics через props.
-4. Компонент CartStatistics **не повинен мати власного state для actionsCount** та має отримувати його виключно через props з компонента App.
-
-5. Будь-яка дія користувача в компоненті CartControls (додавання товару, видалення товару, очищення кошика) **повинна призводити до оновлення локального - actionsCount у CartControls та подальшої передачі цього значення в App.**
+* 🌟 Ability to filter the list.
+* 🌟 Ability to change the color of the list/list items.
+* 🌟 Ability to sort the list.
