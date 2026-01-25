@@ -1,19 +1,32 @@
 import React, {useEffect, useState} from "react";
-import Users from "./components/Users/Users";
-import Form from "./components/Users/Form";
-import ColorPicker from "./components/Users/ColorPicker";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router";
+import HomeRoute from "./routes/HomeRoute";
+import CountryRoute from "./routes/CountryRoute";
+import RootLayout from "./layouts/RootLayout";
 
 export default function App(){
-  const [color, setColor] = useState();
-  const [path, setPath] = useState();
-  const ApplyColor=()=>{
 
-  }
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      Component: RootLayout,
+      children: [
+        {
+          index: true,
+          Component: HomeRoute
+        },
+        {
+          path: "/countries/:code",
+          Component: CountryRoute
+        }
+      ]
+    }
+  ]);
+
   return (
-    <>
-    <Form/>
-    {/* <ColorPicker setColor={setColor} setPath={setPath} applyColor={ApplyColor}/> */}
-    <Users/>
-    </>
+    <RouterProvider router={router} />
   )
 }
