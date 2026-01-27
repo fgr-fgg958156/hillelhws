@@ -17,8 +17,8 @@ export default function SelectFilter({setFilter, array, filterKey}){
     return(
         <>
         <select name="select" onChange={e => setFilter(e.target.value)}>
-            {uniqueOptionsArray.map(item=>(<option>{item}</option>))}
-            <option>All</option>
+            {uniqueOptionsArray.map(item=>(<option key={item} value={item}>{item}</option>))}
+            <option key="All" value="All">All</option>
         </select>
         </>
     )
